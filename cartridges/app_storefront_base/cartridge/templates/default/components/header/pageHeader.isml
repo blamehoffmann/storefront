@@ -3,7 +3,7 @@
     <div class="header-banner slide-up d-none">
         <div class="container">
             <div class="d-flex justify-content-between">
-                <div></div>
+                <div>MEGA SALE!!</div>
                 <div class="content">
                     <isslot id="header-banner-m" description="Slot above the site header" context="global" />
                 </div>
