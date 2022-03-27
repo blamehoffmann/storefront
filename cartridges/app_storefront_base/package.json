@@ -1,3 +1,6 @@
 {
-   "hooks": "./hooks.json"
+   "hooks": "./hooks.json",
+   "paths": {
+     "base": "../app_storefront_base/"
+   }
 }
