@@ -3,7 +3,8 @@ var cache = require('*/cartridge/scripts/middleware/cache');
 
 server.get('Show', cache.applyDefaultCache, function (req, res, next) {
     var Site = require('dw/system/Site');
-    res.render('hello', { param1: Site.current.name });
+    // res.render('hello', { param1: Site.current.name });
+    res.json({ param1: Site.current.name });
     next();
 });
 
