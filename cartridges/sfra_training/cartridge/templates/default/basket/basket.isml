@@ -1,4 +1,4 @@
-<isdecorate template="common/layout/page">
+<iscomment> <isdecorate template="common/layout/page"> </iscomment>
     <div class="container">
         <h2>${Resource.msg('title.cart','cart',null)}</h2>
         <div class="row">
@@ -30,4 +30,4 @@
             </isif>
         </div>
     </div>
-</isdecorate>
+<iscomment> </isdecorate> </iscomment>
