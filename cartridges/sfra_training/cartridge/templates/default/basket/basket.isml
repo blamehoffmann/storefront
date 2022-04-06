@@ -1,15 +1,19 @@
 <isdecorate template="common/layout/page">
     <div class="container">
+        <h2>${Resource.msg('title.cart','cart',null)}</h2>
         <div class="row">
             <isif condition="${pdict.basket.items.length}">
                 <isloop items="${pdict.basket.items}" var="lineItem" status="loopstate">
                     <div class="card col-lg-6">
                         <div class="row">
                             <div class="col-lg-12">
+                                ${Resource.msg('product.name','cart',null)}
                                 <isinclude template="cart/productCard/cartProductCardHeader" />
                             </div>
                             <div class="col-lg-12">
+                                ${Resource.msg('product.price','cart',null)}
                                 <isinclude template="cart/productCard/cartProductCardProductPrice" />
+                                ${Resource.msg('product.availability','cart',null)}
                                 <isinclude template="cart/productCard/cartProductCardAvailability" />
                             </div>
                         </div>
