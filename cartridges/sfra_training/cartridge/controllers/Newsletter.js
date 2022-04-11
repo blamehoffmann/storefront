@@ -48,6 +48,17 @@ server.post(
     function (req, res, next) {
         var newsletterForm = server.forms.getForm('newsletter');
         var continueUrl = dw.web.URLUtils.url('Newsletter-Show');
+        var Resource = require('dw/web/Resource');
+
+        // form validation
+        if (newsletterForm.email.value.toLowerCase()
+            !== newsletterForm.emailconfirm.value.toLowerCase()) {
+            newsletterForm.valid = false;
+            newsletterForm.email.valid = false;
+            newsletterForm.emailconfirm.valid = false;
+            newsletterForm.emailconfirm.error =
+                Resource.msg('error.message.mismatch.email', 'forms', null);
+        }
 
         // Perform any server-side validation before this point, and invalidate form accordingly
         if (newsletterForm.valid) {

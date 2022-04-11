@@ -22,4 +22,12 @@
         parse-error="error.message.parse.email.profile.form"
         regexp="^[\w.%+-]+@[\w.-]+\.[\w]{2,6}$"
         type="string" />
+    <field 
+        formid="emailconfirm"
+        label="label.input.emailconfirm.profile"
+        mandatory="true"
+        max-length="50"
+        parse-error="error.message.parse.email.profile.form"
+        regexp="^[\w.%+-]+@[\w.-]+\.[\w]{2,6}$"
+        type="string"/> 
 </form>
