@@ -3,7 +3,7 @@
 var formValidation = require('base/components/formValidation');
 
 module.exports = {
-    submitNewsletter: function () {
+    newsletter: function () {
         $('form.newsletter-form').on('submit', function (e) {
             var $form = $(this);
             e.preventDefault();
