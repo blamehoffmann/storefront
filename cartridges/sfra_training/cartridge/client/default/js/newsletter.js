@@ -2,6 +2,6 @@
 
 var processInclude = require('base/util');
 
-$(document).on('ready', function () {
+$(document).ready( function () {
     processInclude(require('./newsletter/newsletter'));
 });
