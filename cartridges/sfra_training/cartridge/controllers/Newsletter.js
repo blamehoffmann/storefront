@@ -54,37 +54,31 @@ server.post(
     csrfProtection.validateAjaxRequest,
     function (req, res, next) {
         var newsletterForm = server.forms.getForm('newsletter');
-        var continueUrl = dw.web.URLUtils.url('Newsletter-Show');
-        var Resource = require('dw/web/Resource');
-
-        // form validation
-        if (newsletterForm.email.value.toLowerCase()
-            !== newsletterForm.emailconfirm.value.toLowerCase()) {
-            newsletterForm.valid = false;
-            newsletterForm.email.valid = false;
-            newsletterForm.emailconfirm.valid = false;
-            newsletterForm.emailconfirm.error =
-                Resource.msg('error.message.mismatch.email', 'forms', null);
-        }
 
         // Perform any server-side validation before this point, and invalidate form accordingly
         if (newsletterForm.valid) {
-            // Send back a success status, and a redirect to another route
-            // res.render('/newsletter/newslettersuccess', {
-            //     continueUrl: continueUrl,
-            //     newsletterForm: newsletterForm
-            // });
-            // Show the success page
-            res.json({
-                success: true,
-                redirectUrl: URLUtils.url('Newsletter-Success').toString()
-            });
+            var Transaction = require('dw/system/Transaction');
+            try {
+                Transaction.wrap(function () {
+                    var CustomObjectMgr = require('dw/object/CustomObjectMgr');
+                    var co = CustomObjectMgr.createCustomObject('NewsletterSubscription', newsletterForm.email.value);
+                    co.custom.firstName = newsletterForm.fname.value;
+                    co.custom.lastName = newsletterForm.lname.value;
+
+                    res.json({
+                        success: true,
+                        redirectUrl: URLUtils.url('Newsletter-Success').toString()
+                    });
+                });
+            } catch (e) {
+                var err = e;
+                res.setStatusCode(500);
+                res.json({
+                    error: true,
+                    redirectUrl: URLUtils.url('Error-Start').toString()
+                });
+            }
         } else {
-            // Handle server-side validation errors here: this is just an example
-            // res.render('/newsletter/newslettererror', {
-            //     errorMsg: dw.web.Resource.msg('error.crossfieldvalidation', 'newsletter', null),
-            //     continueUrl: continueUrl
-            // });
             res.setStatusCode(500);
             res.json({
                 error: true,
