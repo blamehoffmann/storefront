@@ -13,5 +13,6 @@
   },
   "paths": {
     "base": "../app_storefront_base/"
-  }
+  },
+  "hooks": "./hooks.json"
 }

@@ -74,6 +74,8 @@ server.post(
                             success: true,
                             redirectUrl: URLUtils.url('Newsletter-Success').toString()
                         });
+                        // Use a hook to send a confirmation email
+                        dw.system.HookMgr.callHook('newsletter.email', 'send', newsletterForm.email.value);
                     });
                 } catch (e) {
                     var err = e;
