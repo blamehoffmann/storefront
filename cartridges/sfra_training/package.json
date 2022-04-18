@@ -1,0 +1,18 @@
+{
+  "name": "sfra_training",
+  "version": "0.0.1",
+  "description": "SFRA demo cartridge",
+  "main": "index.js",
+  "scripts": {
+    "compile:js": "sgmf-scripts --compile js"
+  },
+  "author": "Jorge Hernandez",
+  "license": "MIT",
+  "devDependencies": {
+    "sgmf-scripts": "^2.4.1"
+  },
+  "paths": {
+    "base": "../app_storefront_base/"
+  },
+  "hooks": "./hooks.json"
+}
