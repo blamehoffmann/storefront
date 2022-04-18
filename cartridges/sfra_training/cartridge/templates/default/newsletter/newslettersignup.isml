@@ -43,11 +43,11 @@
                                 <input 
                                     type="email" 
                                     class="form-control" 
-                                    id="newsletter-form-email-confirm"
+                                    id="newsletter-form-emailconfirm"
                                     data-pattern-mismatch="${Resource.msg('error.message.parse.email.profile.form','forms',null)}"
                                     aria-describedby="form-email-confirm-error"
                                     <isprint value="${pdict.newsletterForm.emailconfirm.attributes}" encoding="off" />>
-                                <div class="invalid-feedback" id="form-email-confirm-error"></div>
+                                <div class="invalid-feedback"></div>
                             </div>
                             <input type="hidden" name="${pdict.csrf.tokenName}" value="${pdict.csrf.token}"/>
                                <button type="submit" class="btn btn-block btn-primary">${Resource.msg('button.form.emailsignup', 'homePage', null)}</button>
