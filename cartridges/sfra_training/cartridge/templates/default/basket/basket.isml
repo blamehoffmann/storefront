@@ -1,0 +1,33 @@
+<iscomment> <isdecorate template="common/layout/page"> </iscomment>
+    <div class="container">
+        <h2>${Resource.msg('title.cart','cart',null)}</h2>
+        <div class="row">
+            <isif condition="${pdict.basket.items.length}">
+                <isloop items="${pdict.basket.items}" var="lineItem" status="loopstate">
+                    <div class="card col-lg-6">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                ${Resource.msg('product.name','cart',null)}
+                                <isinclude template="cart/productCard/cartProductCardHeader" />
+                            </div>
+                            <div class="col-lg-12">
+                                ${Resource.msg('product.price','cart',null)}
+                                <isinclude template="cart/productCard/cartProductCardProductPrice" />
+                                ${Resource.msg('product.availability','cart',null)}
+                                <isinclude template="cart/productCard/cartProductCardAvailability" />
+                            </div>
+                        </div>
+                    </div>
+                    <iscomment> <div>${loopstate.count}. ${lineItem.productName}
+                        <isif condition="${lineItem.options[0].displayName}">
+                            (${lineItem.options[0].displayName})
+                        </isif>
+                    </div> </iscomment>
+                    <iscomment> Count ${loopstate.count}  Index ${loopstate.index} ${lineItem.product.name}<br/> </iscomment>
+                </isloop>
+            <iselse>
+                <div>Basket is empty</div>
+            </isif>
+        </div>
+    </div>
+<iscomment> </isdecorate> </iscomment>
