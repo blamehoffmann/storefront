@@ -12,4 +12,43 @@ module.exports = [{
         path: path.resolve('./cartridge/static'),
         filename: '[name].js'
     }
+}, {
+    mode: 'none',
+    name: 'scss',
+    entry: sgmfScripts.createScssPath(),
+    output: {
+        path: path.resolve('./cartridge/static'),
+        filename: '[name].css'
+    },
+    module: {
+        rules: [{
+            test: /\.scss$/,
+            use: ExtractTextPlugin.extract({
+                use: [{
+                    loader: 'css-loader',
+                    options: {
+                        url: false,
+                        minimize: true
+                    }
+                }, {
+                    loader: 'postcss-loader',
+                    options: {
+                        plugins: [
+                            require('autoprefixer')()
+                        ]
+                    }
+                }, {
+                    loader: 'sass-loader',
+                    options: {
+                        includePaths: [
+                            path.resolve(process.cwd(), '../../../storefront-reference-architecture/node_modules/')
+                        ]
+                    }
+                }]
+            })
+        }]
+    },
+    plugins: [
+        new ExtractTextPlugin({ filename: '[name].css' })
+    ]
 }];

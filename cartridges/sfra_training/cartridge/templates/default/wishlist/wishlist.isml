@@ -1,0 +1,43 @@
+<isdecorate template="common/layout/page">
+    <isscript>
+        var assets = require('*/cartridge/scripts/assets');
+        assets.addJs('/js/search.js');
+        assets.addJs('/js/wishlist.js');
+        assets.addCss('/css/search.css');
+    </isscript>
+    <iscomment> <isinclude template="search/searchResultsNoDecorator" /> </iscomment>
+    <div class="hero slant-down search-banner">
+        <h1 class="header page-title">
+            ${Resource.msg('wishlist.title','wishlist',null)}
+        </h1>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <isif condition="${pdict.wishlist.items.length > 0}">
+                    <div class="row">
+                        <div class="col-12">
+                            <a href="#" id="remove-all" data-remove="${URLUtils.url('Wishlist-RemoveAll')}">${Resource.msg('wishlist.remove.all','wishlist',null)}</a>
+                        </div>
+                    </div>
+                </isif>
+                <!--- Product Grid --->
+                <div class="row product-grid" itemtype="http://schema.org/SomeProducts" itemid="#product">
+                    <isif condition="${pdict.wishlist.items.length > 0}">
+                        <isloop items="${pdict.wishlist.items}" var="product">
+                            <div class="col-6 col-sm-4">
+                                <isobject object="${product.productSearchHit}" view="searchhit">
+                                    <isinclude url="${URLUtils.url('Tile-Show', 'pid', product.productID, 'swatches', true, 'ratings', true, 'isWishlistPage', true)}" />
+                                </isobject>
+                            </div>
+                        </isloop>
+                        <iselse>
+                            <div>
+                                <h3>${Resource.msg('wishlist.empty','wishlist',null)}</h3>
+                            </div>
+                    </isif>
+                </div>
+            </div>
+        </div>
+    </div>
+</isdecorate>

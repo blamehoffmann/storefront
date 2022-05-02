@@ -1,0 +1,28 @@
+@import "~base/variables";
+@import "bootstrap/scss/mixins/breakpoints";
+@import "bootstrap/scss/variables";
+
+.wishlist-btn {
+    margin: 0 0 0.938em;
+    padding: 0;
+    border: none;
+    background: transparent;
+    outline: none;
+    border-radius: 5px;
+
+    &:hover {
+        background: $gray-300;
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    &.active {
+        svg {
+            path {
+                fill: #ec4f4f;
+            }
+        }
+    }
+}
