@@ -52,12 +52,10 @@ server.post('Add', function (req, res, next) {
 server.post('Remove', function (req, res, next) {
     var productListMgr = require('dw/customer/ProductListMgr');
     var Transaction = require('dw/system/Transaction');
-    var list;
     var removedProduct;
     var productId = req.querystring.pid;
     var productLists = productListMgr.getProductLists(req.currentCustomer.raw, 10);
-
-    list = productLists[0];
+    var list = productLists[0];
 
     list.items.toArray().forEach(function(item) {
         if (item.productID === productId) {
@@ -86,10 +84,8 @@ server.post('Remove', function (req, res, next) {
 server.post('RemoveAll', function (req, res, next) {
     var productListMgr = require('dw/customer/ProductListMgr');
     var Transaction = require('dw/system/Transaction');
-    var list;
     var productLists = productListMgr.getProductLists(req.currentCustomer.raw, 10);
-
-    list = productLists[0];
+    var list = productLists[0];
 
     try {
         Transaction.wrap(function () {
