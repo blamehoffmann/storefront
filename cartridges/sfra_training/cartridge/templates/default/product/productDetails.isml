@@ -4,6 +4,7 @@
         var assets = require('*/cartridge/scripts/assets');
         assets.addJs('/js/productDetail.js');
         assets.addJs('/js/productDetailCustom.js');
+        assets.addJs('/js/wishlist.js');
         assets.addCss('/css/product/detail.css');
     </isscript>
 
@@ -45,6 +46,12 @@
                     <div class="row">
                         <div class="col">
                             <h1 class="product-name hidden-sm-down">${product.productName}</h1>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <isinclude template="product/components/wishlistBtn" />
                         </div>
                     </div>
 

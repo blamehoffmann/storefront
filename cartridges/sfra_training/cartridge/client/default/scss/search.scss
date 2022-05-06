@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+@import "~base/search";
+
+.wishlist-remove-btn {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    color: rgba(0, 0, 0, 0.7) !important;
+
+    &:hover {
+        color: rgba(0, 0, 0, 0.5) !important;
+    }
+}

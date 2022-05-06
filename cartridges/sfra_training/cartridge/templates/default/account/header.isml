@@ -1,0 +1,26 @@
+<isif condition="${pdict.name === null}">
+    <div class="user hidden-md-down">
+        <a href="${URLUtils.https('Login-Show')}" role="button" aria-label="${Resource.msg('label.header.loginbutton', 'account', null)}">
+            <i class="fa fa-sign-in" aria-hidden="true"></i>
+            <span class="user-message">${Resource.msg('link.header.login', 'account', null)}</span>
+        </a>
+        <a href="${URLUtils.https('Wishlist-Show')}" title="Wishlist">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 27.7917L18.7916 26.6917C14.5 22.8 11.6666 20.2333 11.6666 17.0833C11.6666 14.5167 13.6833 12.5 16.25 12.5C17.7 12.5 19.0916 13.175 20 14.2417C20.9083 13.175 22.3 12.5 23.75 12.5C26.3166 12.5 28.3333 14.5167 28.3333 17.0833C28.3333 20.2333 25.5 22.8 21.2083 26.7L20 27.7917Z" stroke="#EC4F4F" stroke-width="2" fill="none"/>
+            </svg>
+        </a>
+    </div>
+<iselse/>
+    <div class="user hidden-md-down nav-item">
+        <a href="${'#'}" id="myaccount" aria-haspopup="true" aria-label="${Resource.msg('link.header.myaccount', 'account', null)}" role="button">
+            <i class="fa fa-sign-in" aria-hidden="true"></i><span class="user-message btn dropdown-toggle">${pdict.name}</span>
+        </a>
+        <div class="popover popover-bottom">
+            <ul class="nav" role="menu" aria-label="${Resource.msg('label.profile.myaccountlink', 'account', null)}" aria-hidden="true">
+                <li class="nav-item" role="presentation"><a href="${URLUtils.https('Account-Show')}" role="menuitem" tabindex="-1">${Resource.msg('link.header.myaccount', 'account', null)}</a></li>
+                <li class="nav-item" role="presentation"><a href="${URLUtils.url('Order-History')}" role="menuitem" tabindex="-1">${Resource.msg('label.myorders', 'account', null)}</a></li>
+                <li class="nav-item" role="presentation"><a href="${URLUtils.url('Login-Logout')}" role="menuitem" tabindex="-1">${Resource.msg('link.header.logout', 'account', null)}</a></li>
+            </ul>
+        </div>
+    </div>
+</isif>

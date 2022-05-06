@@ -1,0 +1,3 @@
+<a href="#" class="wishlist-remove-btn" data-remove="${URLUtils.url('Wishlist-Remove', 'pid', product.id)}" data-pid="${product.id}" title="${Resource.msg('wishlist.remove.btn', 'wishlist',null)}">
+    <i class="fa fa-expand fa-trash"></i>
+</a>
